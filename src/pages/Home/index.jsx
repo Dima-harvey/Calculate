@@ -12,10 +12,9 @@ import Toolbar from '@/components/Toolbar/components'
 export default () => {
   return (
     <Container>
-    <Header />
-    <Calculator />
-    <Toolbar />
+      <Header />
+      <Calculator />
+      <Toolbar />
     </Container>
- 
   )
 }

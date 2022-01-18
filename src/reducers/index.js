@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
+import history from './history'
 
-import example from './example'
+const rootReducer = combineReducers({ history })
 
-export const rootReducer = combineReducers({
-  example,
-})
+export default rootReducer

@@ -14,13 +14,14 @@ import theme from '@/theme'
 import GlobalStyles from '@/globalStyles'
 
 ReactDOM.render(
-  // <Provider store={store}>
-  //   <ThemeProvider theme={theme}>
-  <BrowserRouter>
-    <App />
-    <GlobalStyles />
-  </BrowserRouter>,
-  document.getElementById('root'),
-  //  </ThemeProvider>
-  // </Provider>,
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <App />
+        <GlobalStyles />
+      </BrowserRouter>
+    </ThemeProvider>
+  </Provider>,
+  // eslint-disable-next-line comma-dangle
+  document.getElementById('root')
 )

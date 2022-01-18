@@ -54,5 +54,7 @@ export default {
     white,
     error,
     
+    
   },
 }
+

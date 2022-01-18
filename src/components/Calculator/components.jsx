@@ -1,9 +1,17 @@
 import React from 'react'
-
+import { connect } from 'react-redux'
+import Calcul from '@/utils/Command'
+import AddCommand from '@/utils/AddComand'
+import SubtractCommand from '@/utils/SubtractCommand'
+import DivideCommand from '@/utils/DivideCommand'
+import MultiplyCommand from '@/utils/MultyCommand'
 import { Container, WrapperContainer } from './styles'
 import Display from '../Display/components'
 import History from '../History/components'
 import Keys from '../Keys/components'
+import { addHistory } from '../../actions/index'
+
+const calculator = new Calcul()
 
 export default class Calculator extends React.Component {
   constructor(props) {
@@ -11,22 +19,21 @@ export default class Calculator extends React.Component {
     this.state = {
       expression: '',
       value: '',
+      history: '',
     }
-
     this.handleOnNumber = this.handleOnNumber.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
-    this.handleEquals = this.handleEquals.bind(this)
-    this.handleClearAll = this.handleClearAll.bind(this)
-    this.handleClear = this.handleClear.bind(this)
-    this.handleDivide = this.handleDivide.bind(this)
+    this.handleSubtraction = this.handleSubtraction.bind(this)
     this.handleMulty = this.handleMulty.bind(this)
-    this.handleSubtraction=this.handleSubtraction.bind(this)
-    this.handleRightBracket=this.handleRightBracket.bind(this)
-    this.handleLeftBracket=this.handleLeftBracket.bind(this)
+    this.handleDivide = this.handleDivide.bind(this)
+    this.handleEquals = this.handleEquals.bind(this)
+    this.handleClear = this.handleClear.bind(this)
+    this.handleClearAll = this.handleClearAll.bind(this)
   }
 
-  result = []
   currentValue = ''
+  result = []
+
   handleOnNumber(number) {
     this.currentValue += number
     this.setState(() => ({
@@ -36,93 +43,78 @@ export default class Calculator extends React.Component {
 
   handleAdd() {
     this.result.push(this.currentValue)
-    this.setState(() => ({
-      value: this.result,
-    }))
     this.result.push('+')
+    calculator.executeCommand(new AddCommand(+this.currentValue))
+    this.setState(() => ({
+      value: calculator.value,
+    }))
     this.currentValue = ''
   }
 
   handleDivide() {
     this.result.push(this.currentValue)
-    this.setState(() => ({
-      value: this.result,
-    }))
     this.result.push('/')
+    calculator.executeCommand(new DivideCommand(+this.currentValue))
+    this.setState(() => ({
+      value: calculator.value,
+    }))
     this.currentValue = ''
   }
 
   handleMulty() {
     this.result.push(this.currentValue)
-    this.setState(() => ({
-      value: this.result,
-    }))
     this.result.push('*')
-    this.currentValue = ''
-  }
-
-  handleEquals() {
-    this.result.push(this.currentValue)
-    const expression = this.result.join(' ')
-    console.log(expression)
-    // eslint-disable-next-line no-eval
-    const desp = eval(expression)
-    console.log(desp)
-    this.currentValue = desp.toPrecision(4).toString()
-    this.result = []
+    calculator.executeCommand(new MultiplyCommand(+this.currentValue))
     this.setState(() => ({
-      value: this.currentValue,
+      value: calculator.value,
     }))
-  }
-
-  handleClearAll() {
     this.currentValue = ''
-    this.result = []
-    this.setState(() => ({
-      value: this.currentValue,
-    }))
-  }
-
-  handleClear() {
-    this.currentValue = ''
-    this.result = []
-    this.setState(() => ({
-      value: this.currentValue,
-    }))
   }
 
   handleSubtraction() {
     this.result.push(this.currentValue)
-    this.setState(() => ({
-      value: this.result,
-    }))
     this.result.push('-')
+    calculator.executeCommand(new SubtractCommand(+this.currentValue))
+    this.setState(() => ({
+      value: calculator.value,
+    }))
     this.currentValue = ''
   }
-
-  handleRightBracket() {
-    this.result.push(this.currentValue)
+  
+  handleEquals() {
+    
     this.setState(() => ({
-      value: this.result,
+      value: calculator.value,
+      expression: this.result.join(''),
+      history:  this.result.join(''),
     }))
-    this.result.push('(')
-    this.currentValue = ''
+    console.log(this.state.expression)
+    addHistory(this.state.expression)
+    
   }
 
-  handleLeftBracket() {
-    this.result.push(this.currentValue)
+  handleClear() {
+   this.currentValue = 0
+   this.setState(() => ({
+    value: calculator.value,
+  }))
+  }
+
+  handleClearAll() {
+    calculator.value = 0
+    this.currentValue = 0
     this.setState(() => ({
-      value: this.result,
+      value: calculator.value,
+      expression:[],
     }))
-    this.result.push(')')
-    this.currentValue = ''
   }
 
   render() {
+    const { history } = this.props
     return (
       <Container>
         <WrapperContainer>
-          <Display value={this.state.value}/>
+          <Display value={this.state.value} />
           <Keys
             onDigit={this.handleOnNumber}
             onAdd={this.handleAdd}
@@ -137,8 +129,12 @@ export default class Calculator extends React.Component {
           />
         </WrapperContainer>
         <hr />
-        <History />
+        <History expression={this.state.history} />
       </Container>
     )
   }
 }
+
+connect(state => ({
+  history: state.history,
+}), { addHistory })(Calculator)

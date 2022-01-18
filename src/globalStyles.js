@@ -23,11 +23,9 @@ export default createGlobalStyle`
   //   }
   // }
 
-  // body {
-  //   background-size: cover;
-  //   background-position: center;
-  //   background-repeat: no-repeat;
-  // }
+   body {
+    background: ${({ theme }) => theme.colors.primary};
+  }
 
   // #root {
   //   display: flex;
