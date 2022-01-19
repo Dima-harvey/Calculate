@@ -19,13 +19,22 @@ export const Container = styled.div`
   
   h6 {
     display: flex;
-    font-size: 3.5rem;
-    font-family: Roboto;
+    margin-top: 3%;
+    justify-content: center;
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
     line-height: 19px;
     color: black;
 
+  }
+  h5 {
+    display: flex;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 19px;
+    color: black;
+    margin-left: 3%;
   }
 `

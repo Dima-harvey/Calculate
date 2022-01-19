@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <Container>
       <StyleContainer>
-        <h1>Calculator APP</h1>
+        <h1>Calculator App</h1>
       </StyleContainer>
       <StyleContainerHref>
         <Link to="/">Home</Link>

@@ -14,6 +14,7 @@ const ControlPanel = () => {
     <Container>
       <div>
         <h1>Settings</h1>
+        <h3>Switch Them</h3>
       </div>
       <style>{'body {background:' + color + ';}'}</style>
       <select id="bgchoice" onChange={changeBG}>

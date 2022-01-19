@@ -12,6 +12,12 @@ export const Container = styled.div`
     height: 15%;
     font-size: 25px;
   }
+  h1 {
+    font-size: 40px;
+  }
+  h3 {
+    margin-top:2%;
+  }
   button {
     margin-top: 1%;
     padding: 0px 4px;

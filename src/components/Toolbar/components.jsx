@@ -1,8 +1,6 @@
 import React from 'react'
 import {
   Container,
-  StyleContainer,
-  StyleContainerHref,
 } from './styles'
 
 const Toolbar = () => {

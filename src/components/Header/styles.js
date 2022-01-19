@@ -12,10 +12,9 @@ export const Container = styled.div`
   align-items: center;
 `
 export const StyleContainer = styled.div`
-display: flex;
-h1 {
+  display: flex;
+  h1 {
     font-size: 3.5rem;
-    font-family: Roboto;
     font-style: normal;
     font-size: 20px;
     line-height: 19px;
@@ -23,18 +22,17 @@ h1 {
   }
 `
 export const StyleContainerHref = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-a {
+  a {
     font-size: 3.5rem;
-    font-family: Roboto;
     font-style: normal;
-    font-weight: bold;
     font-size: 20px;
     line-height: 19px;
     padding-left: 20px;
     color: white;
-}
+    text-decoration: none;
+  }
 `

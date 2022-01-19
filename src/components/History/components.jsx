@@ -8,7 +8,7 @@ const History = props => {
     <Container>
       <h6>History</h6>
       <br/>
-      {props.expression}
+      <h5>{props.expression}</h5>
     </Container>
   )
 }

@@ -10,7 +10,6 @@ export default class Calcul {
       this.value = command.execute(this.value)
       console.log(this.value)
       this.history.push(command)
-      console.log(command)
     }
   
     undo(){

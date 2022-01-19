@@ -24,7 +24,7 @@ export default createGlobalStyle`
   // }
 
    body {
-    background: ${({ theme }) => theme.colors.primary};
+    background: ${({ theme }) => theme.colors.white};
   }
 
   // #root {
