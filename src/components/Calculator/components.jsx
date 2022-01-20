@@ -11,9 +11,10 @@ import History from '../History/components'
 import Keys from '../Keys/components'
 import { addHistory } from '../../actions/index'
 import { store } from '@/store'
-import { SUM, SUBSTARCT, MULTY, DIVIDE } from '@/constants'
+import { SUM, SUBSTARCT, MULTY, DIVIDE, EQUALS } from '@/constants'
 
 const calculator = new Calcul()
+
 
 class Calculator extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class Calculator extends React.Component {
       history: '',
       currentValue: '',
       numbers: [],
+      command: [],
     }
   }
 
@@ -36,48 +38,122 @@ class Calculator extends React.Component {
       this.state.currentValue.includes('+') ||
       this.state.currentValue.includes('-') ||
       this.state.currentValue.includes('*') ||
-      this.state.currentValue.includes('/')
+      this.state.currentValue.includes('/') ||
+      this.state.currentValue.includes('=') ||
+      this.state.currentValue.includes('CE') ||
+      this.state.currentValue.includes('C')
+
     ) {
-      console.log(this.state.currentValue)
-      const index = this.state.currentValue.indexOf('+')
-      const operator = '+'
-      console.log(index)
+      console.log('Expression', this.state.currentValue)
+      let index = ''
+      let operator = ''
+      
+      if (this.state.currentValue.indexOf('+') > -1) {
+        index = this.state.currentValue.indexOf('+')
+        operator = '+'
+        this.state.command.push(operator)
+      } else if (this.state.currentValue.indexOf('-') > -1) {
+        index = this.state.currentValue.indexOf('-')
+        operator = '-'
+        this.state.command.push(operator)
+      } else if (this.state.currentValue.indexOf('*') > -1) {
+        index = this.state.currentValue.indexOf('*')
+        operator = '*'
+        this.state.command.push(operator)
+      } else if (this.state.currentValue.indexOf('/') > -1) {
+        index = this.state.currentValue.indexOf('/')
+        operator = '/'
+        this.state.command.push(operator)
+      } else if (this.state.currentValue.indexOf('=') > -1) {
+        index = this.state.currentValue.indexOf('=')
+        operator = '='
+      } else {
+        this.setState(() => ({
+          value: 0,
+          expression: 0,
+        }))
+        calculator.value = 0
+      }
+
+      console.log('Index', index)
       const number = this.state.currentValue.slice(0, index)
       console.log('Yes', number)
       this.state.currentValue = ''
       this.state.numbers.push(number)
-      console.log(this.state.numbers.length)
-      console.log(this.state.numbers[0])
-      console.log(this.state.numbers[1])
+      console.log('ONE', this.state.numbers[0])
+      console.log('TWO', this.state.numbers[1])
+      console.log('Command', this.state.command)
       if (this.state.numbers.length > 1) {
-        this.Operation(this.state.numbers[0], this.state.numbers[1], operator)
+        this.Operation(this.state.numbers[0], this.state.numbers[1], operator,this.state.command[this.state.command.length -1])
         this.state.numbers = []
-        console.log(this.state.numbers)
-      } else if (calculator.value !== 0) {
-        this.Operation(this.state.numbers[0], 0, operator)
+        
+        console.log('Mass', this.state.numbers)
+      } else if (calculator.value !== 0 ) {
+        this.Operation(this.state.numbers[0], 0, operator,this.state.command[this.state.command.length -1])
         this.state.numbers = []
-      }
+        
+      }else if (operator === '*' || operator === '/'){
+        this.Operation(this.state.numbers[0], 1, operator,this.state.command[this.state.command.length -1])
+        this.state.numbers = []
+        }
     }
     this.setState(() => ({
       value: this.state.currentValue,
     }))
   }
 
-  Operation = (num1, num2, operator) => {
+  Operation = (num1, num2, operator, com) => {
     switch (operator) {
       case SUM:
         calculator.executeCommand(new AddCommand(+num1, +num2))
         console.log(calculator.value)
         this.setState(() => ({
           expression: calculator.value,
+          
         }))
         break
       case SUBSTARCT:
-        return num1 - num2
+        calculator.executeCommand(new SubtractCommand(+num1, +num2))
+        console.log(calculator.value)
+        this.setState(() => ({
+          expression: calculator.value,
+          
+        }))
+        break
       case DIVIDE:
-        return num1 / num2
+        calculator.executeCommand(new DivideCommand(+num1, +num2))
+        console.log(calculator.value)
+        this.setState(() => ({
+          expression: calculator.value,
+         
+        }))
+        break
       case MULTY:
-        return num1 * num2
+        calculator.executeCommand(new MultiplyCommand(+num1, +num2))
+        console.log(calculator.value)
+        this.setState(() => ({
+          expression: calculator.value,
+         
+        }))
+        break
+      case EQUALS:
+        if(com === '+'){
+          calculator.executeCommand(new AddCommand(+num1, +num2))
+        }
+        if(com === '-'){
+          calculator.executeCommand(new SubtractCommand(+num1, +num2))
+        }
+        if(com === '*'){
+          calculator.executeCommand(new MultiplyCommand(+num1, +num2))
+        }
+        if(com  === '/'){
+          calculator.executeCommand(new DivideCommand(+num1, +num2))
+        }
+        this.setState(() => ({
+          expression: calculator.value,
+          command: [],
+        }))
+        break
     }
   }
 
@@ -100,5 +176,5 @@ export default connect(
   state => ({
     textStore: state.history,
   }),
-  dispatch => ({})
+  dispatch => ({}),
 )(Calculator)
