@@ -9,9 +9,8 @@ import { Container, WrapperContainer } from './styles'
 import Display from '../Display/components'
 import History from '../History/components'
 import Keys from '../Keys/components'
-import { addHistory } from '../../actions/index'
-import { store } from '@/store'
 import { SUM, SUBSTARCT, MULTY, DIVIDE, EQUALS } from '@/constants'
+import { addHistory } from '../../actions/index'
 
 const calculator = new Calcul()
 
@@ -27,6 +26,10 @@ class Calculator extends React.Component {
       numbers: [],
       command: [],
     }
+  }
+
+  addTrack = () => {
+    this.props.onAddTrack(this.state.expression)
   }
 
   handleOnNumber = number => {
@@ -67,6 +70,7 @@ class Calculator extends React.Component {
       } else if (this.state.currentValue.indexOf('=') > -1) {
         index = this.state.currentValue.indexOf('=')
         operator = '='
+
       } else {
         this.setState(() => ({
           value: 0,
@@ -153,12 +157,13 @@ class Calculator extends React.Component {
           expression: calculator.value,
           command: [],
         }))
+        this.addTrack()
         break
     }
   }
 
   render() {
-    console.log(store)
+    console.log(this.props.testStore)
     return (
       <Container>
         <WrapperContainer>
@@ -166,15 +171,20 @@ class Calculator extends React.Component {
           <Keys onDigit={this.handleOnNumber} />
         </WrapperContainer>
         <hr />
-        <History expression={this.state.history} />
+        <History expression={this.props.testStore} />
       </Container>
     )
   }
 }
 
-export default connect(
-  state => ({
-    textStore: state.history,
-  }),
-  dispatch => ({}),
-)(Calculator)
+const mapStateToProps = state => ({
+  testStore: state,
+})
+
+const mapDispatchToProps = dispatch => ({
+  onAddTrack: text => {
+    dispatch(addHistory(text))
+  },
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calculator)

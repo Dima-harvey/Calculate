@@ -1,21 +1,16 @@
-import { ADD_HISTORY } from "@/constants/actions"
+import { ADD_HISTORY, CLEAR_HISTORY } from "@/constants"
 
-const init = [
-  {
-    text: '2 + 2',
-  },
-]
-const history = (state = init, action) => {
-  switch (action.type) {
-    case ADD_HISTORY :
-      return [
-        ...state, {
-          text: action.text,
-        },
-      ]
-    default:
-      return state
+const initialState = ['2+2','3+3']
+const INITIAL_STATE = []
+
+function history(state = initialState, action) {
+  if (action.type === ADD_HISTORY) {
+    return [...state, action.payload]
   }
+  if (action.type === CLEAR_HISTORY) {
+    return INITIAL_STATE
+  }
+  return state
 }
 
 export default history

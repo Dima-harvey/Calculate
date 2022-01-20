@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
 import theme from '@/theme'
+import { connect } from 'react-redux'
+import { ClearHistory } from '@/actions'
 
 import { Container } from './styles'
 
-const ControlPanel = () => {
+const ControlPanel = props => {
   const [color, setTheme] = useState(`${({ theme }) => theme.colors.primary}`)
 
   const changeBG = () => {
     const selectedBGColor = document.getElementById('bgchoice').value
     setTheme(selectedBGColor)
   }
+
+  const ClearStore = () => {
+    props.delTrack()
+  }
+
   return (
     <Container>
       <div>
@@ -21,9 +28,19 @@ const ControlPanel = () => {
         <option value="white">Light themse</option>
         <option value="pink">Dark themse</option>
       </select>
-      <button>Clear ALL History</button>
+      <button onClick={ClearStore}>Clear ALL History</button>
     </Container>
   )
 }
 
-export default ControlPanel
+const mapStateToProps = state => ({
+  testStore: state,
+})
+
+const mapDispatchToProps = dispatch => ({
+  delTrack: () => {
+    dispatch(ClearHistory())
+  },
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ControlPanel)
