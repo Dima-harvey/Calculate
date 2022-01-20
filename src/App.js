@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addHistory, ClearHistory } from "./actions";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  addTrack() {
+    this.props.onAddTrack(this.trackInput.value);
+    this.trackInput.value = "";
+  }
+  ClearTrack() {
+    this.props.delTrack();
+  }
+
+  render() {
+    console.log(this.props.testStore);
+    return (
+      <div>
+        <input
+          type="text"
+          ref={(input) => {
+            this.trackInput = input;
+          }}
+        />
+        <button onClick={this.addTrack.bind(this)}>Add history</button>
+        <button onClick={this.ClearTrack.bind(this)}>Clear history</button>
+        {this.props.testStore.map((history, index) => (
+          <li key={index}>{history}</li>
+        ))}
+      </div>
+    );
+  }
 }
+const mapStateToProps = (state) => ({
+  testStore: state,
+});
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  onAddTrack: (text) => {
+    console.log(text);
+    dispatch(addHistory(text));
+  },
+  delTrack: () => {
+    console.log();
+    dispatch(ClearHistory());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
