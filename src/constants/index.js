@@ -6,6 +6,7 @@ export const MULTY = '*'
 export const SUBSTARCT = '-'
 export const SUM = '+'
 export const EQUALS = '='
+export const DIVIDE = '/'
 export const LEFTBRACKET = '('
 export const RIGHTBRACKET = ')'
 export const CLEAR_ALL = 'CE'
@@ -19,7 +20,7 @@ export const buttons = [
   '4',
   '5',
   '6',
-  '/',
+  DIVIDE,
   SUM,
   '1',
   '2',

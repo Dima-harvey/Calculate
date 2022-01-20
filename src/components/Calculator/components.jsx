@@ -11,6 +11,7 @@ import History from '../History/components'
 import Keys from '../Keys/components'
 import { addHistory } from '../../actions/index'
 import { store } from '@/store'
+import { SUM, SUBSTARCT, MULTY, DIVIDE } from '@/constants'
 
 const calculator = new Calcul()
 
@@ -28,6 +29,9 @@ class Calculator extends React.Component {
 
   handleOnNumber = number => {
     this.state.currentValue += number
+    this.setState(() => ({
+      expression: this.state.currentValue,
+    }))
     if (
       this.state.currentValue.includes('+') ||
       this.state.currentValue.includes('-') ||
@@ -47,8 +51,11 @@ class Calculator extends React.Component {
       console.log(this.state.numbers[1])
       if (this.state.numbers.length > 1) {
         this.Operation(this.state.numbers[0], this.state.numbers[1], operator)
-        this.state.number = []
+        this.state.numbers = []
         console.log(this.state.numbers)
+      } else if (calculator.value !== 0) {
+        this.Operation(this.state.numbers[0], 0, operator)
+        this.state.numbers = []
       }
     }
     this.setState(() => ({
@@ -58,16 +65,18 @@ class Calculator extends React.Component {
 
   Operation = (num1, num2, operator) => {
     switch (operator) {
-      case '+':
+      case SUM:
+        calculator.executeCommand(new AddCommand(+num1, +num2))
+        console.log(calculator.value)
         this.setState(() => ({
-          value: calculator.executeCommand(new AddCommand(+num1, +num2)),
+          expression: calculator.value,
         }))
         break
-      case '-':
+      case SUBSTARCT:
         return num1 - num2
-      case '/':
+      case DIVIDE:
         return num1 / num2
-      case '*':
+      case MULTY:
         return num1 * num2
     }
   }
@@ -77,7 +86,7 @@ class Calculator extends React.Component {
     return (
       <Container>
         <WrapperContainer>
-          <Display value={calculator.value} />
+          <Display value={this.state.expression} />
           <Keys onDigit={this.handleOnNumber} />
         </WrapperContainer>
         <hr />
@@ -91,5 +100,5 @@ export default connect(
   state => ({
     textStore: state.history,
   }),
-  dispatch => ({}),
+  dispatch => ({})
 )(Calculator)
