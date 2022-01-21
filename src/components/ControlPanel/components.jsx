@@ -13,10 +13,6 @@ const ControlPanel = props => {
     setTheme(selectedBGColor)
   }
 
-  const ClearStore = () => {
-    props.delTrack()
-  }
-
   return (
     <Container>
       <div>
@@ -28,19 +24,9 @@ const ControlPanel = props => {
         <option value="white">Light themse</option>
         <option value="pink">Dark themse</option>
       </select>
-      <button onClick={ClearStore}>Clear ALL History</button>
+      <button >Clear ALL History</button>
     </Container>
   )
 }
 
-const mapStateToProps = state => ({
-  testStore: state,
-})
-
-const mapDispatchToProps = dispatch => ({
-  delTrack: () => {
-    dispatch(ClearHistory())
-  },
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ControlPanel)
+export default ControlPanel

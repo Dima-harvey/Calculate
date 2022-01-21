@@ -8,7 +8,9 @@ const History = props => {
     <Container>
       <h6>History</h6>
       <br/>
-      <h5>{props.expression}</h5>
+      {props.expression.map((history, index) => (
+          <li key={index}>{history}</li>
+        ))}
     </Container>
   )
 }
