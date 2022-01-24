@@ -1,16 +1,15 @@
 import React from 'react'
 
-import { Container, StyleContainer, StyleContainerHref } from './styles'
-
+import { Container } from './styles'
 
 const History = props => {
   return (
     <Container>
       <h6>History</h6>
-      <br/>
+      <br />
       {props.expression.map((history, index) => (
-          <li key={index}>{history}</li>
-        ))}
+        <dd key={index}>{history}</dd>
+      ))}
     </Container>
   )
 }

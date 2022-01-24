@@ -1,26 +1,25 @@
-const Checkoperator = (operator, index) => {
-  if (this.state.currentValue.indexOf('+') > -1) {
-    index = this.state.currentValue.indexOf('+')
+const Checkoperator = (operator, index, com, command, history) => {
+  if (com.indexOf('+') > -1) {
+    index = com.indexOf('+')
     operator = '+'
-    this.state.command.push(operator)
-  } else if (this.state.currentValue.indexOf('-') > -1) {
-    index = this.state.currentValue.indexOf('-')
+    command.push(operator)
+  } else if (com.indexOf('-') > -1) {
+    index = com.indexOf('-')
     operator = '-'
-    this.state.command.push(operator)
-  } else if (this.state.currentValue.indexOf('*') > -1) {
-    index = this.state.currentValue.indexOf('*')
+    command.push(operator)
+  } else if (com.indexOf('*') > -1) {
+    index = com.indexOf('*')
     operator = '*'
-    this.state.command.push(operator)
-  } else if (this.state.currentValue.indexOf('/') > -1) {
-    index = this.state.currentValue.indexOf('/')
+    command.push(operator)
+  } else if (com.indexOf('/') > -1) {
+    index = com.indexOf('/')
     operator = '/'
-    this.state.command.push(operator)
-  } else if (this.state.currentValue.indexOf('=') > -1) {
-    index = this.state.currentValue.indexOf('=')
+    command.push(operator)
+  } else if (com.indexOf('=') > -1) {
+    index = com.indexOf('=')
     operator = '='
-  } else if (this.state.currentValue.indexOf('CE') > -1) {
   }
-  return [index,operator]
+  return [index, operator, command]
 }
 
 export default Checkoperator

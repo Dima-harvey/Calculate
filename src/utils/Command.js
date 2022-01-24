@@ -6,9 +6,7 @@ export default class Calcul {
     }
   
     executeCommand(command){
-      console.log(command)
       this.value = command.execute(this.value)
-      console.log("Значение",this.value)
       this.history.push(command)
       }
   

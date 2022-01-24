@@ -1,9 +1,8 @@
 import { ADD_HISTORY, CLEAR_HISTORY } from "@/constants"
 
-const initialState = ['2+2','3+3']
 const INITIAL_STATE = []
 
-function history(state = initialState, action) {
+function history(state = [], action) {
   if (action.type === ADD_HISTORY) {
     return [...state, action.payload]
   }

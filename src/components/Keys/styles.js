@@ -9,67 +9,57 @@ export const Container = styled.div`
   padding-right: 2%;
   flex-wrap: wrap;
   flex-direction: column;
-  flex: 0 70vh;
+  flex: 0 80vh;
   order: 2;
-  border: 1px solid white;
-  border-top-color: #9a9a9a; 
+  border: 1px solid transparent;
+  border-top-color: #9a9a9a;
 `
 export const WrapperContainerKeys = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  
+
   button {
     margin-left: 4%;
     margin-right: 4%;
     margin-bottom: 4%;
-    background-color: #f2f2f2; /* Green */
     color: #393939;
     border-color: #9b9b9b;
     font-size: 40px;
     text-align: center;
-    border-radius: 15px;
+    border-radius: 20px;
     font: bold italic 1.8 em Verdana;
-    width: 14vh;
-    height: 12vh;
-    @media (max-width: 1025px) {
-      font-size: 40px;
-      width: 90px;
-      border-radius: 18px;
-    }
+    width: 12%;
+    height: calc(17vh - 20px);
 
-    @media (max-width: 769px) {
-      font-size: 40px;
-      width: 80px;
+    @media (max-width: 1200px) {
+      margin-bottom: 6%;
     }
-    @media (max-width: 670px) {
-      font-size: 35px;
-      width: 60px;
+    @media (max-width: 1100px) {
+      margin-bottom: 7%;
     }
-    @media (max-width: 580px) {
-      font-size: 33px;
-      width: 55px;
-      border-radius: 13px;
-    }
-    @media (max-width: 480px) {
-      font-size: 32px;
-      width: 45px;
-      border-radius: 10px;
-    }
-    @media (max-width: 450px) {
+    @media (max-width: 800px) {
+      margin-bottom: 8%;
       font-size: 30px;
-      width: 42px;
+      border-radius: 15px;
+    }
+    @media (max-width: 640px) {
+      margin-bottom: 9%;
+      font-size: 20px;
       border-radius: 10px;
     }
-    @media (max-width: 330px) {
-      font-size: 25px;
-      width: 35px;
-      border-radius: 10px;
+    @media (max-width: 500px) {
+      margin-bottom: 11%;
+      font-size: 15px;
     }
-    @media (max-height: 380px) {
-      font-size: 25px;
-      width: 60px;
-      border-radius: 10px;
+    @media (max-width: 380px) {
+      margin-bottom: 15%;
+      font-size: 12px;
+      border-radius: 9px;
+    }
+    @media (max-height: 350px) {
+      font-size: 12px;
+      border-radius: 9px;
     }
   }
 `

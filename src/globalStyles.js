@@ -8,27 +8,10 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: ${theme.font};
-    
   }
 
-  // html, body {
-  //   width: 100%;
-  //   height: 100%;
-  // }
-
-  // body {
-  //   & > #root {
-  //     width: 100%;
-  //     height: 100%;
-  //   }
-  // }
-
-   body {
+  body {
     background: ${({ theme }) => theme.colors.white};
   }
 
-  // #root {
-  //   display: flex;
-  //   background: linear-gradient(to bottom, #c06c84da, #6c5b7bda);
-  // }
 `

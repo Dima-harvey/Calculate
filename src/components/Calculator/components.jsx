@@ -1,19 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import Calcul from '@/utils/Command'
 import AddCommand from '@/utils/AddComand'
 import SubtractCommand from '@/utils/SubtractCommand'
 import DivideCommand from '@/utils/DivideCommand'
 import MultiplyCommand from '@/utils/MultyCommand'
+import Checkoperator from '@/utils/Checkoperator'
+import Sendnumber from '@/utils/Sendnumber'
+import { SUM, SUBSTARCT, MULTY, DIVIDE, EQUALS } from '@/constants'
+
 import { Container, WrapperContainer } from './styles'
 import Display from '../Display/components'
 import History from '../History/components'
 import Keys from '../Keys/components'
-import { SUM, SUBSTARCT, MULTY, DIVIDE, EQUALS } from '@/constants'
 import { addHistory } from '../../actions/index'
 
 const calculator = new Calcul()
-
 
 class Calculator extends React.Component {
   constructor(props) {
@@ -35,7 +38,6 @@ class Calculator extends React.Component {
 
   handleOnNumber = number => {
     this.state.currentValue += number
-       console.log("History",this.state.history)
     this.setState(() => ({
       expression: this.state.currentValue,
     }))
@@ -47,42 +49,27 @@ class Calculator extends React.Component {
       this.state.currentValue.includes('=') ||
       this.state.currentValue.includes('CE') ||
       this.state.currentValue.includes('C')
-
     ) {
-      console.log('Expression', this.state.currentValue)
-      let index = ''
-      let operator = ''
-      
-      if (this.state.currentValue.indexOf('+') > -1) {
-        index = this.state.currentValue.indexOf('+')
-        operator = '+'
-        this.state.command.push(operator)
-      } else if (this.state.currentValue.indexOf('-') > -1) {
-        index = this.state.currentValue.indexOf('-')
-        operator = '-'
-        this.state.command.push(operator)
-      } else if (this.state.currentValue.indexOf('*') > -1) {
-        index = this.state.currentValue.indexOf('*')
-        operator = '*'
-        this.state.command.push(operator)
-      } else if (this.state.currentValue.indexOf('/') > -1) {
-        index = this.state.currentValue.indexOf('/')
-        operator = '/'
-        this.state.command.push(operator)
-      } else if (this.state.currentValue.indexOf('=') > -1) {
-        index = this.state.currentValue.indexOf('=')
-        operator = '='
-      } else if  (this.state.currentValue.indexOf('CE') > -1) {
+      const [index, operator, mass] = Checkoperator(
+        '',
+        '',
+        this.state.currentValue,
+        this.state.command,
+        this.state.history,
+        this.state.expression,
+        calculator.value,
+      )
+      this.state.command = mass
+      if (this.state.currentValue.indexOf('CE') > -1) {
         this.state.currentValue = ''
-        if(this.state.history.length === 0){
+        if (this.state.history.length === 0) {
           this.setState(() => ({
             value: 0,
             expression: 0,
           }))
           calculator.value = 0
         }
-
-      } else {
+      } else if (this.state.currentValue.indexOf('C') > -1) {
         this.setState(() => ({
           value: 0,
           expression: 0,
@@ -90,29 +77,17 @@ class Calculator extends React.Component {
         calculator.value = 0
         this.state.currentValue = ''
       }
-
-      console.log('Index', index)
       const number = this.state.currentValue.slice(0, index)
-      console.log('Yes', number)
       this.state.history.push(this.state.currentValue)
       this.state.currentValue = ''
       this.state.numbers.push(number)
-      console.log('ONE', this.state.numbers[0])
-      console.log('TWO', this.state.numbers[1])
-      console.log('Command', this.state.command)
-      if (this.state.numbers.length > 1) {
-        this.Operation(this.state.numbers[0], this.state.numbers[1], operator,this.state.command[this.state.command.length -1])
-        this.state.numbers = []
-        
-        console.log('Mass', this.state.numbers)
-      } else if (calculator.value !== 0 ) {
-        this.Operation(this.state.numbers[0], 0, operator,this.state.command[this.state.command.length -1])
-        this.state.numbers = []
-        
-      }else if (operator === '*' || operator === '/'){
-        this.Operation(this.state.numbers[0], 1, operator,this.state.command[this.state.command.length -1])
-        this.state.numbers = []
-        }
+      this.state.numbers = Sendnumber(
+        this.state.numbers,
+        calculator.value,
+        operator,
+        this.state.command,
+        this.Operation,
+      )
     }
     this.setState(() => ({
       value: this.state.currentValue,
@@ -123,65 +98,52 @@ class Calculator extends React.Component {
     switch (operator) {
       case SUM:
         calculator.executeCommand(new AddCommand(+num1, +num2))
-        console.log(calculator.value)
         this.setState(() => ({
-          expression: calculator.value,
-          
+          expression: Math.trunc(calculator.value * 1000) / 1000,
         }))
-        this.state.history.unshift(calculator.value)
         break
       case SUBSTARCT:
         calculator.executeCommand(new SubtractCommand(+num1, +num2))
-        console.log(calculator.value)
         this.setState(() => ({
-          expression: calculator.value,
-          
+          expression: Math.trunc(calculator.value * 1000) / 1000,
         }))
-        this.state.history.unshift(calculator.value)
         break
       case DIVIDE:
         calculator.executeCommand(new DivideCommand(+num1, +num2))
-        console.log(calculator.value)
         this.setState(() => ({
-          expression: calculator.value,
-         
+          expression: Math.trunc(calculator.value * 1000) / 1000,
         }))
-        this.state.history.unshift(calculator.value)
         break
       case MULTY:
         calculator.executeCommand(new MultiplyCommand(+num1, +num2))
-        console.log(calculator.value)
         this.setState(() => ({
-          expression: calculator.value,
-         
+          expression: Math.trunc(calculator.value * 1000) / 1000,
         }))
-        this.state.history.unshift(calculator.value)
         break
       case EQUALS:
-        if(com === '+'){
+        if (com === '+') {
           calculator.executeCommand(new AddCommand(+num1, +num2))
         }
-        if(com === '-'){
+        if (com === '-') {
           calculator.executeCommand(new SubtractCommand(+num1, +num2))
         }
-        if(com === '*'){
+        if (com === '*') {
           calculator.executeCommand(new MultiplyCommand(+num1, +num2))
         }
-        if(com  === '/'){
+        if (com === '/') {
           calculator.executeCommand(new DivideCommand(+num1, +num2))
         }
         this.setState(() => ({
-          expression: calculator.value,
+          expression: Math.trunc(calculator.value * 1000) / 1000,
           command: [],
         }))
-        this.state.history.push(calculator.value)
+        this.state.history.push(calculator.value.toFixed(3))
         this.addTrack()
         break
     }
   }
 
   render() {
-    console.log(this.props.testStore)
     return (
       <Container>
         <WrapperContainer>

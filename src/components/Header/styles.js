@@ -5,7 +5,7 @@ export const Container = styled.div`
   padding-left: 2%;
   padding-right: 2%;
   height: 10%;
-  min-height: 40px;
+  min-height: 60px;
   flex-wrap: wrap;
   justify-content: space-between;
   background: #444344;
@@ -19,6 +19,9 @@ export const StyleContainer = styled.div`
     font-size: 20px;
     line-height: 19px;
     color: white;
+    @media (max-width: 380px) {
+      font-size: 15px;
+    }
   }
 `
 export const StyleContainerHref = styled.div`
@@ -34,5 +37,8 @@ export const StyleContainerHref = styled.div`
     padding-left: 20px;
     color: white;
     text-decoration: none;
+    @media (max-width: 380px) {
+      font-size: 15px;
+    }
   }
 `
