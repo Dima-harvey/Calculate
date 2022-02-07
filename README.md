@@ -182,4 +182,4 @@ Will be soon...
 [Styled-components](https://www.styled-components.com/docs)
 
 [Commits convetional](https://www.conventionalcommits.org/en/v1.0.0/#specification)
->>>>>>> prime_calculate
+
