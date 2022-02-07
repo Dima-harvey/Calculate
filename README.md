@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Calculate
-=======
 # Tестовое задание калькулятор
 
 ## Содержание
@@ -24,10 +21,6 @@
 - ***ControlPanel*** - используется для управления взаимодействиями калькулятора, которые не связаны с расчетными операциями. Например, он предоставляет функции для переключения истории открытия и закрытия.
 - ***Keypad*** - используется для ввода операндов, а также выполнения различных операций с этими операндами.
 
-#### Диаграмма компонентов:
-
-> ![diagramma of components](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/digrama_of_components.png?raw=true)
-
 #### Необходимый функционал:
 
 - Сложение
@@ -50,17 +43,7 @@
 
 #### Пример графического представления:
 
-Ссылка на макет: [Макет "Калькулятор"](https://xd.adobe.com/view/3d64c8c6-a59f-4785-736f-6b50257b8e83-4b55/). Также макет можно найти в папке **doc** c расширением **.xd** для программы **Adobe XD**.
-
-
-> ![example_1](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/example_1.png?raw=true)
-
-
-> ![example_2](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/example_2.png?raw=true)
-
-
-> ![example_3](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/example_3.png?raw=true)
-
+Ссылка на макет: [Макет "Калькулятор"](https://xd.adobe.com/view/3d64c8c6-a59f-4785-736f-6b50257b8e83-4b55/).
 
 #### Также проект предполагает:
 - Организацию файловой структуры react приложения ([*см. Структура проекта*](#Структура-проекта)).
@@ -96,12 +79,6 @@
 - ***styled-components*** - система стилизации react компонентов.
 - ***detox*** - e2e тестирование для RN приложений.
 
-## Структура проекта
-
-#### Пример необходимой структуры проекта:
-
-> ![structure_1](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/structure_1.png?raw=true)
-
 #### Пояснения к корневой папке:
 - ***.vscode*** - папка для конфигурационных файлов ***VS CODE***.
 - ***node_modules*** - здесь будут находится пакеты, установленные ***NPM*** или ***Yarn***.
@@ -117,11 +94,6 @@
 они часто с состоянием, они несут ответственность за предоставление данных и поведения для своих детей (components).
 - ***srceens*** - в этой папке находятся страницы вашего приложения, которые состоят из компонентов и контейнеров.
 - ***utils*** - необходимые логические модули.
-
-
-#### Пример структуры react компонента:
-
-> ![structure_2](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/structure_2.png?raw=true)
 
 #### Пояснение для структуры файлов компонента:
 - ***index.js*** - корневой файл для экспорта компонентов.
@@ -153,8 +125,6 @@
 2. Получить доступ к репозиторию с шаблоном.
 3. Импортировать шаблон в свой репозиторий.
 4. Склонировать репозиторий на свою локальную машину.
-
-> ![template_1](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/template.png?raw=true)
 
 #### Запуск ESlint
 - Проверка eslint
