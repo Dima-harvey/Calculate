@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const KeysContainer = styled.div`
   margin-left: 3%;
   margin-right: 2%;
   display: flex;

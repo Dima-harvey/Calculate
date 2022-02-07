@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const HeaderContainer = styled.div`
   display: flex;
   padding-left: 2%;
   padding-right: 2%;
@@ -11,10 +11,9 @@ export const Container = styled.div`
   background: #444344;
   align-items: center;
 `
-export const StyleContainer = styled.div`
+export const HeaderTitle = styled.div`
   display: flex;
   h1 {
-    font-size: 3.5rem;
     font-style: normal;
     font-size: 20px;
     line-height: 19px;
@@ -24,7 +23,7 @@ export const StyleContainer = styled.div`
     }
   }
 `
-export const StyleContainerHref = styled.div`
+export const HeaderNav = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;

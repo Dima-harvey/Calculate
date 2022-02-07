@@ -10,7 +10,7 @@ import Checkoperator from '@/utils/Checkoperator'
 import Sendnumber from '@/utils/Sendnumber'
 import { SUM, SUBSTARCT, MULTY, DIVIDE, EQUALS } from '@/constants'
 
-import { Container, WrapperContainer } from './styles'
+import { CalculateContainer, WrapperContainer } from './styles'
 import Display from '../Display/components'
 import History from '../History/components'
 import Keys from '../Keys/components'
@@ -145,14 +145,14 @@ class Calculator extends React.Component {
 
   render() {
     return (
-      <Container>
+      <CalculateContainer>
         <WrapperContainer>
           <Display value={this.state.expression} />
           <Keys onDigit={this.handleOnNumber} />
         </WrapperContainer>
         <hr />
         <History expression={this.props.testStore} />
-      </Container>
+      </CalculateContainer>
     )
   }
 }

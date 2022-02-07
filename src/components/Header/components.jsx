@@ -1,19 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Container, StyleContainer, StyleContainerHref } from './styles'
+import { HeaderContainer, HeaderTitle, HeaderNav } from './styles'
 
 const Header = () => {
   return (
-    <Container>
-      <StyleContainer>
+    <HeaderContainer>
+      <HeaderTitle>
         <h1>Calculator App</h1>
-      </StyleContainer>
-      <StyleContainerHref>
+      </HeaderTitle>
+      <HeaderNav>
         <Link to="/">Home</Link>
         <Link to="/Settings">Settings</Link>
-      </StyleContainerHref>
-    </Container>
+      </HeaderNav>
+    </HeaderContainer>
   )
 }
 

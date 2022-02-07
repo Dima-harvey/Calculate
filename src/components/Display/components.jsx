@@ -1,12 +1,12 @@
 import React from 'react'
-import { Container } from './styles'
+import { DisplayContainer } from './styles'
 
 const Display = props => {
   return (
-    <Container>
+    <DisplayContainer>
       <h3>{props.value}</h3>
       <h2>{props.expression}</h2>
-    </Container>
+    </DisplayContainer>
   )
 }
 

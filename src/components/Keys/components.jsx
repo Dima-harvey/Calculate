@@ -2,7 +2,7 @@ import React from 'react'
 
 import { buttons } from '@/constants'
 
-import { Container, WrapperContainerKeys } from './styles'
+import { KeysContainer, WrapperContainerKeys } from './styles'
 
 const Keys = props => {
   const handleOnClick = e => {
@@ -11,7 +11,7 @@ const Keys = props => {
   }
 
    return (
-    <Container>
+    <KeysContainer>
       <WrapperContainerKeys>
         {buttons.map(item => (
           <button key={item} value={item} 
@@ -20,7 +20,7 @@ const Keys = props => {
           </button>
         ))}
       </WrapperContainerKeys>
-    </Container>
+    </KeysContainer>
   )
 }
 

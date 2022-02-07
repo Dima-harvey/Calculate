@@ -1,8 +1,17 @@
-import styled from 'styled-components'
+import React from 'react'
 
-export const Container = styled.div`
-  height: 100vh;
-  weight: 100vh;
-  display: flex;
-  flex-direction: column;
-`
+import Header from '@/components/Header/components'
+import ControlPanel from '@/components/ControlPanel/components'
+
+import { Container } from './styles'
+
+const Settings = () => {
+   return (
+   <Container>
+      <Header />
+      <ControlPanel />
+   </Container>
+   )
+}
+
+export default Settings

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const DisplayContainer = styled.div`
   display: flex;
   margin-left: 3%;
   padding-left: 7%;

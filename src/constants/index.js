@@ -1,6 +1,8 @@
 export * from './actions'
 export * from './router'
 
+export const LOADER_SIZE = 100
+
 export const CLEAR = 'C'
 export const MULTY = '*'
 export const SUBSTARCT = '-'
