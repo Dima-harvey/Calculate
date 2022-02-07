@@ -30,6 +30,5 @@ export const Container = styled.div`
   option {
     font-size: 20px;
   }
-  
-  }
+}
 `

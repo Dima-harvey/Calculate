@@ -13,5 +13,4 @@ export default createGlobalStyle`
   body {
     background: ${({ theme }) => theme.colors.white};
   }
-
 `

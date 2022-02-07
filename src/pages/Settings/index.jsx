@@ -1,15 +1,17 @@
 import React from 'react'
 
-import Header from '@/components/Header'
+import Header from '@/components/Header/components'
 import ControlPanel from '@/components/ControlPanel/components'
 
 import { Container } from './components'
 
-export default () => {
+const Settings = () => {
    return (
    <Container>
       <Header />
       <ControlPanel />
    </Container>
    )
- }
+}
+
+export default Settings

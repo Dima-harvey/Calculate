@@ -1,6 +1,6 @@
 {
   "extends": ["standard", "standard-react", "prettier", "prettier/react"],
-  "plugins": ["prettier", "react-hooks", "cypress"],
+  "plugins": ["prettier", "react-hooks", "cypress","jest"],
   "parser": "babel-eslint",
   "env": {
     "node": true,

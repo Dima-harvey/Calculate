@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import theme from '@/theme'
 import { ClearHistory } from '@/actions'
 
 import { Container } from './styles'

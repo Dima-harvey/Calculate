@@ -30,7 +30,6 @@ export const StyleContainerHref = styled.div`
   justify-content: space-between;
 
   a {
-    font-size: 3.5rem;
     font-style: normal;
     font-size: 20px;
     line-height: 19px;

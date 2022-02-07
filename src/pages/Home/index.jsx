@@ -5,7 +5,7 @@ import Calculator from '@/components/Calculator/components'
 
 import { Container } from './components'
 
-export default () => {
+const Home = () => {
   return (
     <Container>
       <Header />
@@ -13,3 +13,5 @@ export default () => {
     </Container>
   )
 }
+
+export default Home

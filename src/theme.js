@@ -2,7 +2,6 @@ import { css } from 'styled-components'
 
 const font = 'sans-serif'
 
-// Color palette
 const black = '#000000'
 const white = '#ffffff'
 const error = '#c86464'
