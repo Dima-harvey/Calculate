@@ -28,7 +28,7 @@ export const WrapperContainerKeys = styled.div`
     font-size: 40px;
     text-align: center;
     border-radius: 20px;
-    font: bold italic 1.8 em Verdana;
+    font: bold italic;
     width: 12%;
     height: calc(17vh - 20px);
 

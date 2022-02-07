@@ -36,11 +36,10 @@
     "react/jsx-filename-extension": [
       2,
       {
-        "extensions": [".jsx"]
+        "extensions": [".js",".jsx"]
       }
     ],
     "jsx-quotes": ["error", "prefer-double"],
-    "comma-dangle": [2, "always-multiline"],
     "prefer-const": [
       "error",
       {
