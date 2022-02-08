@@ -1,4 +1,4 @@
-const Checkoperator = (operator, index, com, command, history) => {
+const Checkoperator = (operator, index, com, command) => {
   if (com.indexOf('+') > -1) {
     index = com.indexOf('+')
     operator = '+'

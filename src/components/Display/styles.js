@@ -7,6 +7,7 @@ export const DisplayContainer = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   flex: 1;
+  
   input {
     width: 100%;
     height: 50%;

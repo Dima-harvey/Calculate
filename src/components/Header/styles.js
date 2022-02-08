@@ -13,13 +13,12 @@ export const HeaderContainer = styled.div`
 `
 export const HeaderTitle = styled.div`
   display: flex;
-  h1 {
-    font-style: normal;
-    font-size: 20px;
-    line-height: 19px;
-    color: white;
-    @media (max-width: 380px) {
-      font-size: 15px;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 19px;
+  color: white;
+  @media (max-width: 380px) {
+     font-size: 15px;
     }
   }
 `

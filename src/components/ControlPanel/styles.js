@@ -6,29 +6,29 @@ export const Container = styled.div`
   height: 90vh;
   display: flex;
   flex-direction: column;
-  select {
-    padding: 0px 4px;
-    width: 13%;
-    height: 11%;
-    font-size: 20px;
-    min-height: 30px;
-  }
   h1 {
     font-size: 40px;
   }
   h3 {
     margin-top:2%;
   }
-  button {
+}
+`
+export const Button = styled.button`
     margin-top: 1%;
     padding: 0px 4px;
     width: 13%;
     height: 11%;
     font-size: 20px;
     min-height: 60px;
-  }
-  option {
+`
+export const Select= styled.select`
+    padding: 0px 4px;
+    width: 13%;
+    height: 11%;
+    font-size: 20px;
+    min-height: 30px;
+    option {
     font-size: 20px;
   }
-}
 `

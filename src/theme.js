@@ -5,7 +5,7 @@ const font = 'sans-serif'
 const black = '#000000'
 const white = '#ffffff'
 const error = '#c86464'
-const primary = '#c06c84'
+const green = '#00FA9A'
 const secondary = '#6c5b7b'
 const secondaryLight = '#6a6b7b'
 
@@ -44,7 +44,7 @@ export default {
   spaces: [0, 4, 8, 16, 32, 64, 128],
   fontSizes: [12, 14, 16, 20, 24, 32, 40, 56, 72, 80],
   colors: {
-    primary,
+    green,
     secondary,
     secondaryLight,
     black,

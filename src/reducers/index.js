@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux'
-import history from './history'
+// import { combineReducers } from 'redux'
+// import history from './history'
 
-const rootReducer = combineReducers({ history })
+// const rootReducer = combineReducers({ history })
 
-export default rootReducer
+// export default rootReducer

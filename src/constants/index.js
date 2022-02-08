@@ -2,6 +2,7 @@ import AddCommand from '@/utils/AddComand'
 import SubtractCommand from '@/utils/SubtractCommand'
 import DivideCommand from '@/utils/DivideCommand'
 import MultiplyCommand from '@/utils/MultyCommand'
+import theme from '@/theme'
 
 export * from './actions'
 export * from './router'
@@ -41,8 +42,15 @@ export const buttons = [
 ]
 
 export const BUTTONS_OPERATOR = [
-  { name: MULTY, operation: MultiplyCommand },
-  { name: SUBSTARCT, operation: SubtractCommand },
-  { name: DIVIDE, operation: DivideCommand },
-  { name: SUM, operation: AddCommand },
+  { name: MULTY, Operation: MultiplyCommand },
+  { name: SUBSTARCT, Operation: SubtractCommand },
+  { name: DIVIDE, Operation: DivideCommand },
+  { name: SUM, Operation: AddCommand },
+]
+
+export const SIGNS = [SUM, SUBSTARCT, MULTY, DIVIDE, EQUALS, CLEAR, CLEAR_ALL]
+
+export const OPTIONS_INFO = [
+  { color: theme.colors.white, name: 'Light theme' },
+  { color: theme.colors.green, name: 'Dark theme' },
 ]

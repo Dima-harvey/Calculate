@@ -1,13 +1,14 @@
 import React from 'react'
 
-import { Container } from './styles'
+import { Container, ContainerArticle } from './styles'
 
 const History = props => {
+  const { expression } = props
+
   return (
     <Container>
-      <h6>History</h6>
-      <br />
-      {props.expression.map((history, index) => (
+      <ContainerArticle>History</ContainerArticle>
+      {expression.map((history, index) => (
         <dd key={index}>{history}</dd>
       ))}
     </Container>

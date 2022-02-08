@@ -15,6 +15,7 @@ import {
   DIVIDE,
   EQUALS,
   BUTTONS_OPERATOR,
+  SIGNS,
 } from '@/constants'
 
 import { CalculateContainer, WrapperContainer } from './styles'
@@ -48,53 +49,48 @@ class Calculator extends React.Component {
     this.setState(() => ({
       expression: this.state.currentValue,
     }))
-    if (
-      this.state.currentValue.includes('+') ||
-      this.state.currentValue.includes('-') ||
-      this.state.currentValue.includes('*') ||
-      this.state.currentValue.includes('/') ||
-      this.state.currentValue.includes('=') ||
-      this.state.currentValue.includes('CE') ||
-      this.state.currentValue.includes('C')
-    ) {
-      const [index, operator, mass] = Checkoperator(
-        '',
-        '',
-        this.state.currentValue,
-        this.state.command,
-        this.state.history,
-        this.state.expression,
-        calculator.value
-      )
-      this.state.command = mass
-      if (this.state.currentValue.indexOf('CE') > -1) {
-        this.state.currentValue = ''
-        if (this.state.history.length === 0) {
+
+    for (const char of SIGNS) {
+      if (this.state.currentValue.includes(char)) {
+        const [index, operator, mass] = Checkoperator(
+          '',
+          '',
+          this.state.currentValue,
+          this.state.command,
+          this.state.history,
+          this.state.expression,
+          calculator.value
+        )
+        this.state.command = mass
+        if (this.state.currentValue.indexOf('CE') > -1) {
+          this.state.currentValue = ''
+          if (this.state.history.length === 0) {
+            this.setState(() => ({
+              value: 0,
+              expression: 0,
+            }))
+            calculator.value = 0
+          }
+        } else if (this.state.currentValue.indexOf('C') > -1) {
           this.setState(() => ({
             value: 0,
             expression: 0,
           }))
           calculator.value = 0
+          this.state.currentValue = ''
         }
-      } else if (this.state.currentValue.indexOf('C') > -1) {
-        this.setState(() => ({
-          value: 0,
-          expression: 0,
-        }))
-        calculator.value = 0
+        const number = this.state.currentValue.slice(0, index)
+        this.state.history.push(this.state.currentValue)
         this.state.currentValue = ''
+        this.state.numbers.push(number)
+        this.state.numbers = Sendnumber(
+          this.state.numbers,
+          calculator.value,
+          operator,
+          this.state.command,
+          this.Operation
+        )
       }
-      const number = this.state.currentValue.slice(0, index)
-      this.state.history.push(this.state.currentValue)
-      this.state.currentValue = ''
-      this.state.numbers.push(number)
-      this.state.numbers = Sendnumber(
-        this.state.numbers,
-        calculator.value,
-        operator,
-        this.state.command,
-        this.Operation
-      )
     }
     this.setState(() => ({
       value: this.state.currentValue,
@@ -130,7 +126,7 @@ class Calculator extends React.Component {
       case EQUALS:
         BUTTONS_OPERATOR.map(item => {
           if (item.name === com) {
-            calculator.executeCommand(new item.operation(+num1, +num2))
+            calculator.executeCommand(new item.Operation(+num1, +num2))
           }
         })
         this.setState(() => ({
@@ -150,7 +146,6 @@ class Calculator extends React.Component {
           <Display value={this.state.expression} />
           <Keys onDigit={this.handleOnNumber} />
         </WrapperContainer>
-        <hr />
         <History expression={this.props.testStore} />
       </CalculateContainer>
     )

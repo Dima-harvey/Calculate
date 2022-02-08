@@ -10,11 +10,7 @@ export default createGlobalStyle`
     font-family: ${theme.font};
   }
 
-  body {
-    background: ${props => props.theme};
-  }
-  
-  input {
+  body,input {
     background: ${props => props.theme};
   }
 `

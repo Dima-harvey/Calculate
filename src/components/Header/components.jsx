@@ -6,9 +6,7 @@ import { HeaderContainer, HeaderTitle, HeaderNav } from './styles'
 const Header = () => {
   return (
     <HeaderContainer>
-      <HeaderTitle>
-        <h1>Calculator App</h1>
-      </HeaderTitle>
+      <HeaderTitle>Calculator App</HeaderTitle>
       <HeaderNav>
         <Link to="/">Home</Link>
         <Link to="/Settings">Settings</Link>
