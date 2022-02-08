@@ -4,8 +4,7 @@ import { DisplayContainer } from './styles'
 const Display = props => {
   return (
     <DisplayContainer>
-      <h3>{props.value}</h3>
-      <h2>{props.expression}</h2>
+      <input type="text" value={ props.expression || props.value } maxLength="10" readOnly />
     </DisplayContainer>
   )
 }

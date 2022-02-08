@@ -1,3 +1,8 @@
+import AddCommand from '@/utils/AddComand'
+import SubtractCommand from '@/utils/SubtractCommand'
+import DivideCommand from '@/utils/DivideCommand'
+import MultiplyCommand from '@/utils/MultyCommand'
+
 export * from './actions'
 export * from './router'
 
@@ -33,4 +38,11 @@ export const buttons = [
   '0',
   RIGHTBRACKET,
   CLEAR_ALL,
+]
+
+export const BUTTONS_OPERATOR = [
+  { name: MULTY, operation: MultiplyCommand },
+  { name: SUBSTARCT, operation: SubtractCommand },
+  { name: DIVIDE, operation: DivideCommand },
+  { name: SUM, operation: AddCommand },
 ]

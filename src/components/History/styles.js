@@ -3,10 +3,10 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  max-height: 90%;
+  max-height: 80%;
   flex: 0 30vw;
   order: 2;
-  overflow-y: scroll;
+  overflow: auto;
 
   h6 {
     display: flex;

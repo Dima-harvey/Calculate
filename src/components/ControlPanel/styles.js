@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  margin-top: 1%;
+  margin-top: 3%;
   margin-left: 3%;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   select {

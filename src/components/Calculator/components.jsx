@@ -8,7 +8,14 @@ import DivideCommand from '@/utils/DivideCommand'
 import MultiplyCommand from '@/utils/MultyCommand'
 import Checkoperator from '@/utils/Checkoperator'
 import Sendnumber from '@/utils/Sendnumber'
-import { SUM, SUBSTARCT, MULTY, DIVIDE, EQUALS } from '@/constants'
+import {
+  SUM,
+  SUBSTARCT,
+  MULTY,
+  DIVIDE,
+  EQUALS,
+  BUTTONS_OPERATOR,
+} from '@/constants'
 
 import { CalculateContainer, WrapperContainer } from './styles'
 import Display from '../Display/components'
@@ -57,7 +64,7 @@ class Calculator extends React.Component {
         this.state.command,
         this.state.history,
         this.state.expression,
-        calculator.value,
+        calculator.value
       )
       this.state.command = mass
       if (this.state.currentValue.indexOf('CE') > -1) {
@@ -86,7 +93,7 @@ class Calculator extends React.Component {
         calculator.value,
         operator,
         this.state.command,
-        this.Operation,
+        this.Operation
       )
     }
     this.setState(() => ({
@@ -121,18 +128,11 @@ class Calculator extends React.Component {
         }))
         break
       case EQUALS:
-        if (com === '+') {
-          calculator.executeCommand(new AddCommand(+num1, +num2))
-        }
-        if (com === '-') {
-          calculator.executeCommand(new SubtractCommand(+num1, +num2))
-        }
-        if (com === '*') {
-          calculator.executeCommand(new MultiplyCommand(+num1, +num2))
-        }
-        if (com === '/') {
-          calculator.executeCommand(new DivideCommand(+num1, +num2))
-        }
+        BUTTONS_OPERATOR.map(item => {
+          if (item.name === com) {
+            calculator.executeCommand(new item.operation(+num1, +num2))
+          }
+        })
         this.setState(() => ({
           expression: Math.trunc(calculator.value * 1000) / 1000,
           command: [],

@@ -13,4 +13,8 @@ export default createGlobalStyle`
   body {
     background: ${props => props.theme};
   }
+  
+  input {
+    background: ${props => props.theme};
+  }
 `

@@ -8,9 +8,11 @@ import { Container } from './styles'
 
 const ControlPanel = props => {
   const [color, setTheme] = useState('white')
+  const bgColor = sessionStorage.getItem('bgColor')
 
   const changeBG = () => {
     const selectedBGColor = document.getElementById('bgchoice').value
+    sessionStorage.setItem('bgColor', color)
     setTheme(selectedBGColor)
   }
 
@@ -22,14 +24,14 @@ const ControlPanel = props => {
     <Container>
       <div>
         <h1>Settings</h1>
-        <h3>Switch Them</h3>
+        <h3>Switch Theme</h3>
       </div>
       <select id="bgchoice" onChange={changeBG}>
-        <option value="white">Light themse</option>
-        <option value="pink">Dark themse</option>
+        <option value="pink">Light theme</option>
+        <option value="white">Dark theme</option>
       </select>
       <button onClick={ClearStore}>Clear ALL History</button>
-      <GlobalStyles theme ={color} />
+      <GlobalStyles theme ={bgColor} />
     </Container>
   )
 }
