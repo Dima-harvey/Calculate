@@ -4,7 +4,6 @@ export const HeaderContainer = styled.div`
   display: flex;
   padding-left: 2%;
   padding-right: 2%;
-  height: 10%;
   min-height: 60px;
   flex-wrap: wrap;
   justify-content: space-between;

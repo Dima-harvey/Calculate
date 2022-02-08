@@ -5,8 +5,12 @@ export default class SubtractCommand {
   }
 
   execute(currentValue) {
-    if (currentValue === 0) {
-      return this.valueToAdd - this.twoAdd - currentValue
+    if (currentValue === 0 && this.valueToAdd === 0) {
+      return -this.valueToAdd
+    } else if (Object.is(-0, currentValue)) {
+      return currentValue - this.valueToAdd
+    } else if (currentValue === 0) {
+      return this.valueToAdd - currentValue
     }
     return currentValue - this.valueToAdd
   }

@@ -1,5 +1,5 @@
 export default class AddCommand {
-  constructor(valueToAdd,twoAdd) {
+  constructor(valueToAdd, twoAdd) {
     this.valueToAdd = valueToAdd
     this.twoAdd = twoAdd
   }

@@ -30,7 +30,7 @@ class Calculator extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      expression: '',
+      expression: '0',
       value: '',
       history: [],
       currentValue: '',

@@ -6,14 +6,14 @@ export const DisplayContainer = styled.div`
   margin-right:9%;
   justify-content: flex-end;
   align-items: flex-end;
-  flex: 1;
-  
+  min-height: 60px;
+
   input {
     width: 100%;
-    height: 50%;
+    height: 70%;
     color: black;
     font-size: 30px;
-    direction: rtl;
+    text-align:right;
     border: none;
     outline:none;
   }

@@ -22,7 +22,7 @@ export const WrapperContainerKeys = styled.div`
   button {
     margin-left: 4%;
     margin-right: 4%;
-    margin-bottom: 4%;
+    margin-bottom: 5%;
     color: #393939;
     border-color: #9b9b9b;
     font-size: 40px;

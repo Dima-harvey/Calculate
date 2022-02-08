@@ -4,9 +4,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1%;
-  max-height: 90%;
+  max-height: 95%;
   flex: 0 30vw;
-  order: 2;
   overflow: auto;
   border: 1px solid transparent;
   border-left-color: #9a9a9a;

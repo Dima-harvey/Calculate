@@ -17,14 +17,14 @@ export const Container = styled.div`
 export const Button = styled.button`
     margin-top: 1%;
     padding: 0px 4px;
-    width: 13%;
+    width: 200px;
     height: 11%;
     font-size: 20px;
     min-height: 60px;
 `
 export const Select= styled.select`
     padding: 0px 4px;
-    width: 13%;
+    width: 200px;
     height: 11%;
     font-size: 20px;
     min-height: 30px;
