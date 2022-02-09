@@ -30,7 +30,7 @@
       2,
       {
         "maximum": 2,
-        "when": "always"
+        "when": "multiline"
       }
     ],
     "react/jsx-filename-extension": [

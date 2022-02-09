@@ -1,4 +1,4 @@
-import { ADD_HISTORY, CLEAR_HISTORY } from "@/constants"
+import { ADD_HISTORY, CLEAR_HISTORY } from '@/constants'
 
 const INITIAL_STATE = []
 

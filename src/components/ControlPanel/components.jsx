@@ -28,12 +28,14 @@ const ControlPanel = props => {
         <h3>Switch Theme</h3>
       </div>
       <Select id="bgchoice" onChange={changeBG}>
-        {OPTIONS_INFO.map(item => 
-          <option key={item.name} value={item.color}>{item.name}</option>
-        )}
+        {OPTIONS_INFO.map(item => (
+          <option key={item.name} value={item.color}>
+            {item.name}
+          </option>
+        ))}
       </Select>
       <Button onClick={ClearStore}>Clear ALL History</Button>
-      <GlobalStyles theme ={color} />
+      <GlobalStyles theme={color} />
     </Container>
   )
 }

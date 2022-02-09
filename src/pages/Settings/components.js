@@ -6,12 +6,12 @@ import ControlPanel from '@/components/ControlPanel/components'
 import { Container } from './styles'
 
 const Settings = () => {
-   return (
-   <Container>
+  return (
+    <Container>
       <Header />
       <ControlPanel />
-   </Container>
-   )
+    </Container>
+  )
 }
 
 export default Settings

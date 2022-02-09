@@ -7,15 +7,13 @@ import { KeysContainer, WrapperContainerKeys } from './styles'
 const Keys = props => {
   const handleOnClick = e => {
     props.onDigit(e.target.value)
-
   }
 
-   return (
+  return (
     <KeysContainer>
       <WrapperContainerKeys>
         {buttons.map(item => (
-          <button key={item} value={item} 
-          onClick={handleOnClick}>
+          <button key={item} value={item} onClick={handleOnClick}>
             {item}
           </button>
         ))}
